@@ -3,8 +3,11 @@
     //DOM render fuunctions
     function movieTitle(movie) {
         // Select the existing <li> element with class "form item"
-        const li = document.getElementsByClassName("film item")
-
+        const li = document.querySelector("film.item")
+        
+        if(!li){
+            console.error("Could not find element with class 'film item'");
+        } return;
          // Set inner HTML with movie details
         li.innerHTML += `
         <p>${movie.id }</p>
