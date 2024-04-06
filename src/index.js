@@ -1,15 +1,17 @@
-// Your code here
+document.addEventListener("DOMContentLoaded",()=>{
+    // Your code here
 
     //DOM render fuunctions
     function movieTitle(movie) {
         // Select the existing <li> element with class "form item"
         const li = document.querySelector("film.item")
         
-        if(!li){
-            console.error("Could not find element with class 'film item'");
-        } return;
+        // if(!li){
+        //     console.error("Could not find element with class 'film item'");
+        // return;
+        // }
          // Set inner HTML with movie details
-        li.innerHTML += `
+        li.innerHTML = `
         <p>${movie.id }</p>
         <p>${movie.title }</p>
         <p>${movie.runtime}</P>
@@ -27,8 +29,8 @@
     //fetch requests
     //Get fetch for all users
     function getAllMovies(){
-        let baseURL = "http://localhost:3000/films"
-        fetch(baseURL)
+        let baseURL = 
+        fetch("http://localhost:3000/films")
         .then(res => res.json())
         .then(films =>films.forEach(movie => {
             return movieTitle(movie)}))
@@ -49,6 +51,7 @@
     //Get data and render movies to the DOM
     function initialize(){
         getAllMovies()
-        // 
+        
     }
-    console.log(initialize())
+    initialize()
+})
