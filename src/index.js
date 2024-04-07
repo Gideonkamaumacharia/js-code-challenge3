@@ -1,10 +1,27 @@
 document.addEventListener("DOMContentLoaded",()=>{
     // Your code here
 
+
+    function handleBuyMovie(e){
+        e.preventDefault()
+        let movieObj = {
+           id: e.target.id.value,
+           title:e.target.title.value,
+           runtime:e.target.runtime.value,
+           capacity:e.target.capacity.value,
+           showtime:e.target.showtime.value,
+           tickets:e.target.tickets_sold.value,
+           description:e.target.description.value,
+           poster:e.target.poster.value
+        }
+        renderMovie(movieObj)
+        buyMovie(movieObj)
+    }
+
     //DOM render fuunctions
-    function movieTitle(movie) {
+    function renderMovie(movie) {
         // Select the existing <li> element with class "form item"
-        const li = document.querySelector("film.item")
+        const li = document.querySelector(".film.item")
         
         // if(!li){
         //     console.error("Could not find element with class 'film item'");
@@ -33,7 +50,19 @@ document.addEventListener("DOMContentLoaded",()=>{
         fetch("http://localhost:3000/films")
         .then(res => res.json())
         .then(films =>films.forEach(movie => {
-            return movieTitle(movie)}))
+            return renderMovie(movie)}))
+    }
+
+    function buyMovie(){
+        fetch("http://localhost:3000/films",{
+            method: "POST",
+            headers:{
+                'Content-Type': "application/json",
+                'Accept': "application/json"
+            },
+            body:JSON.stringify(movieObj)
+           
+        })
     }
     
     // function processFilms(response) {
