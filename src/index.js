@@ -1,25 +1,16 @@
 // Your code here
-//store url in a variable
 let url = "http://localhost:3000/films/";
-//grab the ul element
 let ulFilms = document.getElementById("films");
-//grab the Buy Ticket button
 let idBuyticket = document.getElementById("buy-ticket")
-//grab img
+
 let movieImg = document.getElementById("poster");
-//grab movie title div
 let idTitle = document.getElementById("title")
-//grab runtime div
 let idRuntime = document.getElementById("runtime")
-//grab movie description div
 let idFilmInfo = document.getElementById("film-info")
-//grab showtime div
 let idShowtime = document.getElementById("showtime")
-//grab the remaining tickets div
 let idTicketnum = document.getElementById("ticket-num")
 
-//this function removes the content in the ul by setting it to empty string and then
-//the contents are created using addMovie()
+
 function grabMovie(){
     fetch(url)
     .then(res => res.json())
@@ -33,9 +24,6 @@ function grabMovie(){
     .catch(e => console.log(e.message));
 }
 grabMovie();
-
-//adds and deletes movies
-
 function addMovie(movies){
     
     let remaining = movies.capacity - movies.tickets_sold;
@@ -68,8 +56,6 @@ function addMovie(movies){
     }
 }
 
-
-//updates the DOM
 function updateDom(movies){
     let remaining = movies.capacity - movies.tickets_sold;
     let movieId = movies.id;
@@ -101,8 +87,6 @@ function updateDom(movies){
     let button = document.querySelector("[data-movie-id='"+movieId+"']");
     button.innerText = availabiity;
 }
-
-//build buying tickets
 function buyTicket(movies){
 
     movies.tickets_sold++
@@ -145,8 +129,6 @@ function buyTicket(movies){
     })
     .catch (e => console.log(e.message));
 }
-
-//deletes movies
 function deleteMovie(movie){
     let requestHeaders = {
         "Content-Type": "application/json"
