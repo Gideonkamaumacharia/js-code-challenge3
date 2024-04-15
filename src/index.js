@@ -1,7 +1,7 @@
 // Your code here
 let url = "http://localhost:3000/films/";
 let ulFilms = document.getElementById("films");
-let buyTicket = document.getElementById("buy-ticket")
+let idBuyticket = document.getElementById("buy-ticket")
 
 let movieImg = document.getElementById("poster");
 let idTitle = document.getElementById("title")
@@ -75,7 +75,7 @@ function updateDom(movies){
     idShowtime.innerText = movies.showtime;
     idTicketnum.innerText = remaining;
 
-    idBuyTicket.onclick = () => {
+    idBuyticket.onclick = () => {
         if(remaining > 0)
         { 
              buyTicket(movies)
