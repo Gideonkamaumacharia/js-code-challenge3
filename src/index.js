@@ -88,7 +88,7 @@ function updateDom(movies){
     button.innerText = availabiity;
 }
 function buyTicket(movies){
-   
+
     movies.tickets_sold++
     let ticketsSold = movies.tickets_sold;
     let requestHeaders = {
