@@ -3,6 +3,7 @@ let ul = document.getElementById("films")
 
 
 let li = document.createElement('li')
+let remainingTickets = films.capacity - films.tickets_sold
 
 
 function grabMovie(){
@@ -14,4 +15,14 @@ function grabMovie(){
         }
     })
 
+}
+grabMovie()
+
+function addMovie(movies){
+    movieTitle = films.title
+    movieId = films.id
+
+    if(!remainingTickets > 0){
+        li.className = 'sold-out'
+    }
 }
